@@ -23,6 +23,7 @@ public class LoginTest {
         profilePage = new ProfilePage(driver);
         qrCodePage = new QrCodePage(driver);
         driver.manage().window().maximize();
+        driver.get(ConfProperties.getProperty("loginpage"));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
