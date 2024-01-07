@@ -1,22 +1,22 @@
 package org.example;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 public class ConfProperties {
 
-    protected static FileInputStream fileInputStream;
-
-    protected static Properties PROPERTIES;
+    private static final Properties PROPERTIES;
 
     static {
+        FileInputStream fileInputStream = null;
         try {
             fileInputStream = new FileInputStream("src/test/resources/conf.properties");
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         } finally {
             if (fileInputStream != null)
                 try {
